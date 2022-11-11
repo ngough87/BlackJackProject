@@ -8,13 +8,11 @@ public class Dealer extends Player {
 	private Deck deck =  new Deck();
 
 	public Card dealCard() {
-		Card card = null;
 		
-		return card;
+		
+		return deck.dealCard();
 	}
-	
-	
-	
+
 	public Card shuffleDeck() {
 		Card card = null;
 		
@@ -29,7 +27,15 @@ public class Dealer extends Player {
 		
 	}
 
+	public Deck getDeck() {
+		return deck;
+	}
 
+	public void setDeck(Deck deck) {
+		this.deck = deck;
+	}
+
+	
 
 
 	

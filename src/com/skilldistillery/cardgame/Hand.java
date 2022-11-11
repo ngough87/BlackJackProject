@@ -21,22 +21,40 @@ public abstract class Hand {
 		this.cards = cards;
 	}
 	
-//	public void addCard(card: Card) {
-//		
-//	}
+	public void addCard(Card card) {
+		cards.add(card);
+	}
 	public void clear() {
-		
+		cards= new ArrayList<>();
 	}
 
 	public int getHandValue() {
-	return 0;	
+	int value = 0;
+	
+	for (Card card : cards) {
+		value += card.getValue();
+		
+	} return value;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Hand [cards=" + cards + "]";
+		return "Cards " + cards + " ";
 	}
+
+
+	public List<Card> getCards() {
+		return cards;
+	}
+
+
+	public void setCards(List<Card> cards) {
+		this.cards = cards;
+	}
+
+
+	
 
 
 	
