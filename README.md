@@ -1,7 +1,7 @@
-#BlackJack Project
+# BlackJack Project
 
 
-##Description
+## Description
 
 The objective of the BlackJack project is to allow me to 
 gain more experience with object oriented programming. 
@@ -10,10 +10,10 @@ methods, enumerated types etc. This project is especially challenging because it
 
 
 
-##Technologies Used
+## Technologies Used
 
 
 
 
 
-##Lessons Learned
+## Lessons Learned
