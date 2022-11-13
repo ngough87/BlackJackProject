@@ -28,7 +28,7 @@ public abstract class Hand {
 		cards= new ArrayList<>();
 	}
 
-	public int getHandValue() {
+	public int getValue() {
 	int value = 0;
 	
 	for (Card card : cards) {
