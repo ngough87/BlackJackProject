@@ -9,34 +9,18 @@ import com.skilldistillery.players.Dealer;
 import com.skilldistillery.players.Player;
 
 public class BlackJackRounds {
-	// boolean nextRound;
 	Dealer dealer = new Dealer();
 	Player player = new Player();
+	
 	List<Card> cards = new ArrayList<>();
 	Scanner sc = new Scanner(System.in);
 
-	// I want to prompt the player, if they would like to play
-	// if yes, deal cards, if no exit
 	public void play() {
 		System.out.println("***** WeLCoME To BlACkJaCk!! *****");
 		System.out.println();
 		System.out.println("Lets play a game! ");
 		System.out.println();
 		dealInitialCard();
-		//
-
-//		while (!player.isBust() || dealer.hit()) {
-//			anotherRound();
-//
-//			if (player.gameOver() || dealer.gameOver()) {
-//				showWinner();
-//			
-//			}
-//			else {
-//				playerTurn();
-//			}
-//				
-//			}
 	}
 
 	public void exitGame() {
@@ -58,6 +42,7 @@ public class BlackJackRounds {
 		System.out.println("DEALER CARDS: ");
 		System.out.println();
 		dealer.showOneCard();
+		System.out.println("Face down card");
 		System.out.println();
 		System.out.println("Do you want HIT or STAND ?");
 		System.out.println("Enter the number (1) for HIT or the number (2) for STAND");
@@ -70,16 +55,13 @@ public class BlackJackRounds {
 		if (i == 1) {
 			player.addCardsToHand(dealer.dealCard());
 			dealerTurn();
-		}
-		if (i == 2) {
+		} else {
 			dealerTurn();
 		}
-
 	}
 
-	// deal another card
 	public void anotherRound() {
-
+		System.out.println();
 		System.out.println("Your cards are: ");
 		if (!player.isBust()) {
 			player.showCards();
@@ -97,13 +79,7 @@ public class BlackJackRounds {
 		}
 	}
 
-	// I want to display the cards that have been dealt
-	// ask player if they want to hit or stay
-	// ask dealer if they want to hit or stay
-
 	public void playerTurn() {
-		// System.out.println(" Do you want (1) hit or (2) stand?");
-		// int i = sc.nextInt();
 		if (player.isBust()) {
 			System.out.println();
 			System.out.println("Player Busted!");
@@ -111,43 +87,39 @@ public class BlackJackRounds {
 			player.showCards();
 			showWinner();
 			if (!player.isBust()) {
-				anotherRound();
+				dealerTurn();
 			}
-			// else {
-			// dealerTurn();
-			// } return true;
 		}
 	}
 
 	public void dealerTurn() {
 		if (dealer.hit()) {
 			dealer.addCardsToHand(dealer.dealCard());
-			System.out.println("Dealer cards first round: ");
-			System.out.println("TEST 1 ");
+			System.out.println("Dealer hits: ");
+			System.out.println();
 			dealer.showCards();
-			anotherRound();
+			playerTurn();
 
-			if (dealer.isBust()) {
-				// System.out.print("Dealer cards : ");
-				// System.out.println("Dealer lost! Player wins!");
-				System.out.println("TEST 2");
-				dealer.showCards();
-				showWinner();
-			}
 		}
-	
+		if (dealer.isBust()) {
+			System.out.println("Dealer lost! Player wins!");
+			showWinner();
+		}
 	}
 
 	public void showWinner() {
 
 		if (!player.isBust() && dealer.isBust()) {
-			System.out.println(" Player wins! ");
+			System.out.println();
+			System.out.println("Player winning cards! ");
+			System.out.println();
 			player.showCards();
 		}
 		if (!dealer.isBust() && player.isBust()) {
-			System.out.println(" Dealer wins ! ");
+			System.out.println();
+			System.out.println("Dealer winning cards! ");
+			System.out.println();
 			dealer.showCards();
 		}
-		// exitGame();
 	}
 }
